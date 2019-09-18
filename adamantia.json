@@ -1,4 +1,5 @@
 {
-    "port": 4000,
-    "bundles": []
+    "bundles": [],
+    "logfile": "server.log",
+    "port": 4000
 }

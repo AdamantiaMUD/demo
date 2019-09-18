@@ -22,6 +22,7 @@
     },
     "main": "build/index.js",
     "dependencies": {
+        "@adamantiamud/adamantia-core": "file:../adamantia-core",
         "commander": "3.0.1",
         "semver": "6.3.0"
     },

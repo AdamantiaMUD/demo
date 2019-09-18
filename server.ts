@@ -1,10 +1,66 @@
+/* eslint-disable no-process-env */
 import commander from 'commander';
 import fs from 'fs';
 import semver from 'semver';
 
+import {BundleManager, Config, Logger} from '@adamantiamud/adamantia-core';
+
+/*
+ * Set debug variable and encoding.
+ * 'net' by default to help find possible server errors.
+ */
+process.env.NODE_DEBUG = 'net';
+process.stdin.setEncoding('utf8');
+
 import pkg from './package.json';
+import serverConfig from './adamantia.json';
+import Timeout = NodeJS.Timeout;
 
 if (!semver.satisfies(process.version, pkg.engines.node)) {
     /* eslint-disable-next-line max-len */
     throw new Error(`Adamantia's core engine requires Node version ${pkg.engines.node}, you are currently running Node ${process.version}.`);
 }
+
+/* It's over 9000! */
+const DEFAULT_PORT = 9001;
+
+const config = new Config();
+
+config.load(serverConfig);
+
+// cmdline options
+commander
+    .version(pkg.version)
+    .option(
+        '-p, --port [portNumber]',
+        `Port to host the server [${DEFAULT_PORT}]`,
+        config.get('port', DEFAULT_PORT)
+    )
+    .option('-v, --verbose', 'Verbose console logging.', true)
+    .parse(process.argv);
+
+const logfile = config.get('logfile');
+
+if (logfile) {
+    Logger.setFileLogging(`${__dirname}/log/${logfile}`);
+}
+
+// Set logging level based on CLI option or environment variable.
+const logLevel = commander.verbose
+    ? 'verbose'
+    : process.env.LOG_LEVEL || config.get('logLevel') || 'debug';
+
+Logger.setLevel(logLevel);
+
+config.set('dataPath', `${__dirname}/data/`);
+
+let tickInterval: Timeout = null,
+    playerTickInterval: Timeout = null;
+
+const init = async (): Promise<void> => {
+    Logger.log('START - Initializing mud');
+
+    const manager = new BundleManager(`${__dirname}/bundles/`, config);
+
+    await manager.loadBundles();
+};
