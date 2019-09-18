@@ -15,11 +15,16 @@
         "build": "npm run build:types && npm run build:ts",
         "build:ts": "tsc",
         "build:types": "tsc --emitDeclarationOnly",
+        "prestart": "npm run build:ts",
+        "start": "node --experimental-modules ./build/server.js",
         "type-check": "tsc --noEmit",
         "type-check:watch": "npm run type-check -- --watch"
     },
     "main": "build/index.js",
-    "dependencies": {},
+    "dependencies": {
+        "commander": "3.0.1",
+        "semver": "6.3.0"
+    },
     "devDependencies": {
         "@chimericdream/eslint-config": "4.1.0",
         "@chimericdream/eslint-config-typescript": "3.0.0",
