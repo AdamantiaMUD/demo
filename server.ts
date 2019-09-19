@@ -3,7 +3,12 @@ import commander from 'commander';
 import fs from 'fs';
 import semver from 'semver';
 
-import {BundleManager, Config, Logger} from '@adamantiamud/adamantia-core';
+import {
+    BundleManager,
+    Config,
+    GameState,
+    Logger,
+} from '@adamantiamud/adamantia-core';
 
 /*
  * Set debug variable and encoding.
@@ -14,7 +19,6 @@ process.stdin.setEncoding('utf8');
 
 import pkg from './package.json';
 import serverConfig from './adamantia.json';
-import Timeout = NodeJS.Timeout;
 
 if (!semver.satisfies(process.version, pkg.engines.node)) {
     /* eslint-disable-next-line max-len */
@@ -23,6 +27,7 @@ if (!semver.satisfies(process.version, pkg.engines.node)) {
 
 /* It's over 9000! */
 const DEFAULT_PORT = 9001;
+const DEFAULT_TICK_FREQUENCY = 100;
 
 const config = new Config();
 
@@ -54,8 +59,10 @@ Logger.setLevel(logLevel);
 
 config.set('dataPath', `${__dirname}/data/`);
 
-let tickInterval: Timeout = null,
-    playerTickInterval: Timeout = null;
+const state: GameState = new GameState(config);
+
+let playerTickInterval = null,
+    tickInterval = null;
 
 const init = async (): Promise<void> => {
     Logger.log('START - Initializing mud');
@@ -63,4 +70,13 @@ const init = async (): Promise<void> => {
     const manager = new BundleManager(`${__dirname}/bundles/`, config);
 
     await manager.loadBundles();
+
+    state.attachServer();
+
+    Logger.log('START - Starting server');
+
+    state.startServer(commander);
+
+    clearInterval(playerTickInterval);
+    clearInterval(tickInterval);
 };
