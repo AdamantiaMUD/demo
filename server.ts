@@ -1,6 +1,5 @@
 /* eslint-disable no-process-env */
 import commander from 'commander';
-import fs from 'fs';
 import semver from 'semver';
 
 import {
@@ -27,7 +26,6 @@ if (!semver.satisfies(process.version, pkg.engines.node)) {
 
 /* It's over 9000! */
 const DEFAULT_PORT = 9001;
-const DEFAULT_TICK_FREQUENCY = 100;
 
 const config = new Config();
 
@@ -61,22 +59,12 @@ config.set('dataPath', `${__dirname}/data/`);
 
 const state: GameState = new GameState(config);
 
-let playerTickInterval = null,
-    tickInterval = null;
+Logger.log('START - Initializing mud');
 
-const init = async (): Promise<void> => {
-    Logger.log('START - Initializing mud');
+const manager = new BundleManager(`${__dirname}/bundles/`, config);
 
-    const manager = new BundleManager(`${__dirname}/bundles/`, config);
-
-    await manager.loadBundles();
-
-    state.attachServer();
-
+manager.loadBundles().then(() => {
     Logger.log('START - Starting server');
 
     state.startServer(commander);
-
-    clearInterval(playerTickInterval);
-    clearInterval(tickInterval);
-};
+});
