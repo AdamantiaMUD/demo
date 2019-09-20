@@ -27,44 +27,49 @@ if (!semver.satisfies(process.version, pkg.engines.node)) {
 /* It's over 9000! */
 const DEFAULT_PORT = 9001;
 
-const config = new Config();
+const init = (): void => {
+    const config = new Config();
 
-config.load(serverConfig);
+    config.load(serverConfig);
 
-// cmdline options
-commander
-    .version(pkg.version)
-    .option(
-        '-p, --port [portNumber]',
-        `Port to host the server [${DEFAULT_PORT}]`,
-        config.get('port', DEFAULT_PORT)
-    )
-    .option('-v, --verbose', 'Verbose console logging.', true)
-    .parse(process.argv);
+    // cmdline options
+    commander
+        .version(pkg.version)
+        .option(
+            '-p, --port [portNumber]',
+            `Port to host the server [${DEFAULT_PORT}]`,
+            config.get('port', DEFAULT_PORT)
+        )
+        .option('-v, --verbose', 'Verbose console logging.', true)
+        .parse(process.argv);
 
-const logfile = config.get('logfile');
+    const logfile = config.get('logfile');
 
-if (logfile) {
-    Logger.setFileLogging(`${__dirname}/log/${logfile}`);
-}
+    if (logfile) {
+        Logger.setFileLogging(`${__dirname}/log/${logfile}`);
+    }
 
-// Set logging level based on CLI option or environment variable.
-const logLevel = commander.verbose
-    ? 'verbose'
-    : process.env.LOG_LEVEL || config.get('logLevel') || 'debug';
+    // Set logging level based on CLI option or environment variable.
+    const logLevel = commander.verbose
+        ? 'verbose'
+        : process.env.LOG_LEVEL || config.get('logLevel') || 'debug';
 
-Logger.setLevel(logLevel);
+    Logger.setLevel(logLevel);
 
-config.set('dataPath', `${__dirname}/data/`);
+    config.set('dataPath', `${__dirname}/data/`);
+    config.set('rootPath', __dirname);
 
-const state: GameState = new GameState(config);
+    const state: GameState = new GameState(config);
 
-Logger.log('START - Initializing mud');
+    Logger.log('START - Initializing mud');
 
-const manager = new BundleManager(`${__dirname}/bundles/`, config);
+    const manager = new BundleManager(`${__dirname}/bundles/`, config);
 
-manager.loadBundles().then(() => {
-    Logger.log('START - Starting server');
+    manager.loadBundles().then(() => {
+        Logger.log('START - Starting server');
 
-    state.startServer(commander);
-});
+        state.startServer(commander);
+    });
+};
+
+init();

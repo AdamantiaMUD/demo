@@ -16,7 +16,7 @@
         "build:ts": "tsc",
         "build:types": "tsc --emitDeclarationOnly",
         "prestart": "npm run build:ts",
-        "start": "node --experimental-modules ./build/server.js",
+        "start": "node ./build/server.js",
         "type-check": "tsc --noEmit",
         "type-check:watch": "npm run type-check -- --watch"
     },
