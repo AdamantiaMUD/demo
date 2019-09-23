@@ -1,5 +1,7 @@
 {
-    "bundles": [],
+    "bundles": [
+        "core.telnet-networking"
+    ],
     "entityLoaders": {
         "accounts": {
             "source": "JsonDirectory",
