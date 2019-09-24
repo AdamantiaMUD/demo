@@ -1,6 +1,7 @@
 {
     "bundles": [
-        "core.telnet-networking"
+        "core.telnet-networking",
+        "core.default-areas"
     ],
     "entityLoaders": {
         "accounts": {
@@ -29,5 +30,5 @@
         }
     },
     "logfile": "server.log",
-    "port": 4000
+    "port.telnet": 4000
 }

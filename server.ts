@@ -56,6 +56,7 @@ const init = (): void => {
 
     Logger.setLevel(logLevel);
 
+    config.set('bundlesPath', `${__dirname}/bundles/`);
     config.set('dataPath', `${__dirname}/data/`);
     config.set('rootPath', __dirname);
 
@@ -63,7 +64,7 @@ const init = (): void => {
 
     Logger.log('START - Initializing mud');
 
-    const manager = new BundleManager(`${__dirname}/bundles/`, config);
+    const manager = new BundleManager(`${__dirname}/bundles/`, state);
 
     manager.loadBundles().then(() => {
         Logger.log('START - Starting server');
