@@ -56,8 +56,8 @@ const init = (): void => {
 
     Logger.setLevel(logLevel);
 
-    config.set('bundlesPath', `${__dirname}/bundles/`);
-    config.set('dataPath', `${__dirname}/data/`);
+    config.set('bundlesPath', `${__dirname}/bundles`);
+    config.set('dataPath', `${__dirname}/data`);
     config.set('rootPath', __dirname);
 
     const state: GameState = new GameState(config);
