@@ -7,25 +7,25 @@
         "accounts": {
             "source": "JsonDirectory",
             "config": {
-                "path": "data/account"
+                "path": "[DATA]/account"
             }
         },
         "areas": {
             "source": "JsonArea",
             "config": {
-                "path": "bundles/[BUNDLE]/areas"
+                "path": "[BUNDLES]/[BUNDLE]/areas"
             }
         },
         "players": {
             "source": "JsonDirectory",
             "config": {
-                "path": "data/player"
+                "path": "[DATA]/player"
             }
         },
         "rooms": {
             "source": "Json",
             "config": {
-                "path": "bundles/[BUNDLE]/areas/[AREA]/rooms.json"
+                "path": "[BUNDLES]/[BUNDLE]/areas/[AREA]/rooms.json"
             }
         }
     },

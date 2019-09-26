@@ -64,7 +64,7 @@ const init = (): void => {
 
     Logger.log('START - Initializing mud');
 
-    const manager = new BundleManager(`${__dirname}/bundles/`, state);
+    const manager = new BundleManager(state);
 
     manager.loadBundles().then(() => {
         Logger.log('START - Starting server');
