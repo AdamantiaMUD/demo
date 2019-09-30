@@ -44,7 +44,7 @@ const init = (): void => {
     // Set logging level based on CLI option or environment variable.
     const logLevel = commander.verbose
         ? 'verbose'
-        : process.env.LOG_LEVEL || config.get('logLevel') || 'debug';
+        : process.env.LOG_LEVEL || config.get('logLevel', 'debug');
 
     Logger.setLevel(logLevel);
 
