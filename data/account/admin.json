@@ -1,0 +1,17 @@
+{
+    "username": "admin",
+    "characters": [
+        {
+            "username": "Admin",
+            "deleted": false
+        },
+        {
+            "username": "Ilraeth",
+            "deleted": false
+        }
+    ],
+    "password": "$2a$10$kE4d5oRcQOCksbKHur7nbezcGD6gUil/cqkwhGagfM1u4WfhDjR8.",
+    "metadata": {},
+    "deleted": false,
+    "banned": false
+}

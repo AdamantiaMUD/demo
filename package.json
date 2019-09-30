@@ -12,27 +12,24 @@
         "node": ">=12"
     },
     "scripts": {
-        "build": "npm run build:types && npm run build:ts",
-        "build:ts": "tsc",
-        "build:types": "tsc --emitDeclarationOnly",
-        "prestart": "npm run build:ts",
+        "build": "tsc",
+        "prestart": "npm run build",
         "start": "node ./build/server.js",
         "type-check": "tsc --noEmit",
         "type-check:watch": "npm run type-check -- --watch"
     },
-    "main": "build/index.js",
+    "main": "build/server.js",
     "dependencies": {
         "@adamantiamud/adamantia-core": "file:../adamantia-core",
-        "commander": "3.0.1",
-        "semver": "6.3.0"
+        "commander": "3.0.2"
     },
     "devDependencies": {
         "@chimericdream/eslint-config": "4.1.0",
         "@chimericdream/eslint-config-typescript": "3.0.0",
-        "@types/node": "12.6.8",
-        "@typescript-eslint/eslint-plugin": "1.13.0",
-        "@typescript-eslint/parser": "1.13.0",
-        "eslint": "6.1.0",
+        "@types/node": "12.7.8",
+        "@typescript-eslint/eslint-plugin": "2.3.1",
+        "@typescript-eslint/parser": "2.3.1",
+        "eslint": "6.5.0",
         "typescript": "3.6.3"
     }
 }

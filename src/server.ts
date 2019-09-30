@@ -1,6 +1,5 @@
 /* eslint-disable no-process-env */
 import commander from 'commander';
-import semver from 'semver';
 
 import {
     BundleManager,
@@ -16,13 +15,7 @@ import {
 process.env.NODE_DEBUG = 'net';
 process.stdin.setEncoding('utf8');
 
-import pkg from './package.json';
 import serverConfig from './adamantia.json';
-
-if (!semver.satisfies(process.version, pkg.engines.node)) {
-    /* eslint-disable-next-line max-len */
-    throw new Error(`Adamantia's core engine requires Node version ${pkg.engines.node}, you are currently running Node ${process.version}.`);
-}
 
 /* It's over 9000! */
 const DEFAULT_PORT = 9001;
@@ -34,7 +27,6 @@ const init = (): void => {
 
     // cmdline options
     commander
-        .version(pkg.version)
         .option(
             '-p, --port [portNumber]',
             `Port to host the server [${DEFAULT_PORT}]`,
