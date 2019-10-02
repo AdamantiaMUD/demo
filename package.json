@@ -13,6 +13,7 @@
     },
     "scripts": {
         "build": "tsc",
+        "postbuild": "node scripts/copy-assets.js",
         "prestart": "npm run build",
         "start": "node ./build/server.js",
         "type-check": "tsc --noEmit",
@@ -26,10 +27,12 @@
     "devDependencies": {
         "@chimericdream/eslint-config": "4.1.0",
         "@chimericdream/eslint-config-typescript": "3.0.0",
+        "@types/fs-extra": "8.0.0",
         "@types/node": "12.7.8",
         "@typescript-eslint/eslint-plugin": "2.3.1",
         "@typescript-eslint/parser": "2.3.1",
         "eslint": "6.5.0",
+        "fs-extra": "8.1.0",
         "typescript": "3.6.3"
     }
 }
