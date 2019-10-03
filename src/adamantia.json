@@ -2,7 +2,8 @@
     "bundles": [
         "core.telnet-networking",
         "core.default-areas",
-        "core.input-events"
+        "core.input-events",
+        "core.commands"
     ],
     "entityLoaders": {
         "accounts": {
