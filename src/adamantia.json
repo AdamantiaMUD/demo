@@ -3,7 +3,8 @@
         "core.telnet-networking",
         "core.default-areas",
         "core.input-events",
-        "core.commands"
+        "core.commands",
+        "core.player-events"
     ],
     "entityLoaders": {
         "accounts": {
@@ -32,5 +33,6 @@
         }
     },
     "logfile": "server.log",
-    "port.telnet": 4000
+    "port.telnet": 4000,
+    "startingRoom": "limbo:r0001"
 }
