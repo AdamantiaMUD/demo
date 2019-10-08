@@ -19,6 +19,12 @@
                 "path": "[BUNDLES]/[BUNDLE]/areas"
             }
         },
+        "items": {
+            "source": "Json",
+            "config": {
+                "path": "bundles/[BUNDLE]/areas/[AREA]/items.json"
+            }
+        },
         "players": {
             "source": "JsonDirectory",
             "config": {
