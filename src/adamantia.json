@@ -3,6 +3,7 @@
         "core.telnet-networking",
         "core.default-areas",
         "core.input-events",
+        "core.character-attributes",
         "core.commands",
         "core.player-events"
     ],
