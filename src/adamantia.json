@@ -5,7 +5,8 @@
         "core.input-events",
         "core.character-attributes",
         "core.commands",
-        "core.player-events"
+        "core.player-events",
+        "core.behaviors"
     ],
     "entityLoaders": {
         "accounts": {
