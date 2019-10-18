@@ -23,7 +23,7 @@
         "items": {
             "source": "Json",
             "config": {
-                "path": "bundles/[BUNDLE]/areas/[AREA]/items.json"
+                "path": "[BUNDLES]/[BUNDLE]/areas/[AREA]/items.json"
             }
         },
         "players": {
