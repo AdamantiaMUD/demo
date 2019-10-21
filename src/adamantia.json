@@ -6,7 +6,8 @@
         "core.character-attributes",
         "core.commands",
         "core.player-events",
-        "core.behaviors"
+        "core.behaviors",
+        "core.quests"
     ],
     "entityLoaders": {
         "accounts": {
@@ -31,6 +32,12 @@
             "source": "JsonDirectory",
             "config": {
                 "path": "[DATA]/player"
+            }
+        },
+        "quests": {
+            "source": "Json",
+            "config": {
+                "path": "[BUNDLES]/[BUNDLE]/areas/[AREA]/quests.json"
             }
         },
         "rooms": {
