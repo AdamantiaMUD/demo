@@ -28,6 +28,12 @@
                 "path": "[BUNDLES]/[BUNDLE]/areas/[AREA]/items.json"
             }
         },
+        "npcs": {
+            "source": "Json",
+            "config": {
+                "path": "[BUNDLES]/[BUNDLE]/areas/[AREA]/npcs.json"
+            }
+        },
         "players": {
             "source": "JsonDirectory",
             "config": {
