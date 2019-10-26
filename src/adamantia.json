@@ -1,13 +1,15 @@
 {
     "bundles": [
-        "core.telnet-networking",
-        "core.default-areas",
-        "core.input-events",
+        "core.behaviors",
         "core.character-attributes",
         "core.commands",
+        "core.combat",
+        "core.default-areas",
+        "core.input-events",
         "core.player-events",
-        "core.behaviors",
-        "core.quests"
+        "core.quests",
+        "core.telnet-networking",
+        "core.websocket-networking"
     ],
     "entityLoaders": {
         "accounts": {
@@ -55,5 +57,6 @@
     },
     "logfile": "server.log",
     "port.telnet": 4000,
+    "port.websocket": 4001,
     "startingRoom": "limbo:r0001"
 }
