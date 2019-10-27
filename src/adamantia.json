@@ -9,7 +9,8 @@
         "core.player-events",
         "core.quests",
         "core.telnet-networking",
-        "core.websocket-networking"
+        "core.websocket-networking",
+        "character-classes"
     ],
     "entityLoaders": {
         "accounts": {
