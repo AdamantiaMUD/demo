@@ -22,17 +22,17 @@
     "main": "build/server.js",
     "dependencies": {
         "@adamantiamud/adamantia-core": "file:../adamantia-core",
-        "commander": "3.0.2"
+        "commander": "4.0.0"
     },
     "devDependencies": {
         "@chimericdream/eslint-config": "4.1.0",
         "@chimericdream/eslint-config-typescript": "3.0.0",
-        "@types/fs-extra": "8.0.0",
-        "@types/node": "12.7.8",
-        "@typescript-eslint/eslint-plugin": "2.3.1",
-        "@typescript-eslint/parser": "2.3.1",
-        "eslint": "6.5.0",
+        "@types/fs-extra": "8.0.1",
+        "@types/node": "12.12.6",
+        "@typescript-eslint/eslint-plugin": "2.6.1",
+        "@typescript-eslint/parser": "2.6.1",
+        "eslint": "6.6.0",
         "fs-extra": "8.1.0",
-        "typescript": "3.7.1-rc"
+        "typescript": "3.7.2"
     }
 }
