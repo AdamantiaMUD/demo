@@ -4,13 +4,9 @@
         {
             "username": "Admin",
             "deleted": false
-        },
-        {
-            "username": "Ilraeth",
-            "deleted": false
         }
     ],
-    "password": "$2a$10$kE4d5oRcQOCksbKHur7nbezcGD6gUil/cqkwhGagfM1u4WfhDjR8.",
+    "password": "$2y$10$Ss95oWmWNm7kXLnSERmf7.H3MVQauCd3i1.lenyHQasMjR4Uuwr22",
     "metadata": {},
     "deleted": false,
     "banned": false

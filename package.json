@@ -13,7 +13,6 @@
     },
     "scripts": {
         "build": "tsc",
-        "postbuild": "node scripts/copy-assets.js",
         "prestart": "npm run build",
         "start": "node ./build/server.js",
         "type-check": "tsc --noEmit",

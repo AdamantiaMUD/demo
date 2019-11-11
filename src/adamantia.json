@@ -1,15 +1,7 @@
 {
     "bundles": [
-        "core.behaviors",
-        "core.character-attributes",
-        "core.commands",
-        "core.combat",
-        "core.default-areas",
-        "core.input-events",
-        "core.player-events",
-        "core.quests",
-        "core.telnet-networking",
-        "core.websocket-networking",
+        "adamantia.character-attributes",
+        "adamantia.websocket-networking",
         "character-classes"
     ],
     "entityLoaders": {
@@ -59,5 +51,6 @@
     "logfile": "server.log",
     "port.telnet": 4000,
     "port.websocket": 4001,
-    "startingRoom": "limbo:r0001"
+    "startingRoom": "limbo:r0001",
+    "dataPath": "[ROOT]/../data"
 }
