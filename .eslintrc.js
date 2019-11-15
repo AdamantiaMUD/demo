@@ -1,7 +1,8 @@
 module.exports = {
     'extends': [
-        '@chimericdream/eslint-config',
-        '@chimericdream/eslint-config-typescript',
+        '@chimericdream',
+        '@chimericdream/jest',
+        '@chimericdream/typescript',
     ],
     parserOptions: {
         project: './tsconfig.json',
