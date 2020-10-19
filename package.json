@@ -9,10 +9,13 @@
     "type": "module",
     "types": "index.d.ts",
     "engines": {
-        "node": ">=12"
+        "node": ">=14"
     },
     "scripts": {
         "build": "tsc",
+        "clean": "rimraf build/*",
+        "postbuild": "node scripts/copy-assets.cjs && npx copyfiles data/**/*.json build",
+        "prebuild": "npm run clean",
         "prestart": "npm run build",
         "start": "node ./build/server.js",
         "type-check": "tsc --noEmit",
@@ -21,16 +24,19 @@
     "main": "build/server.js",
     "dependencies": {
         "@adamantiamud/adamantia-core": "file:../adamantia-core",
-        "commander": "4.0.0"
+        "commander": "6.1.0"
     },
     "devDependencies": {
-        "@chimericdream/eslint-config": "5.1.0",
-        "@chimericdream/eslint-config-jest": "3.0.1",
-        "@chimericdream/eslint-config-typescript": "4.0.1",
-        "@types/fs-extra": "8.0.1",
-        "@types/node": "12.12.6",
-        "eslint": "6.6.0",
-        "fs-extra": "8.1.0",
-        "typescript": "3.7.2"
+        "@chimericdream/eslint-config": "6.0.1",
+        "@chimericdream/eslint-config-import": "1.0.1",
+        "@chimericdream/eslint-config-typescript": "5.0.1",
+        "@types/fs-extra": "9.0.2",
+        "@types/node": "14.11.8",
+        "@typescript-eslint/eslint-plugin": "4.4.1",
+        "@typescript-eslint/parser": "4.4.1",
+        "eslint": "7.11.0",
+        "fs-extra": "9.0.1",
+        "rimraf": "3.0.2",
+        "typescript": "4.0.3"
     }
 }

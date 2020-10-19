@@ -6,7 +6,11 @@ import {
     Config,
     GameState,
     Logger,
-} from '@adamantiamud/adamantia-core';
+    /* eslint-disable-next-line import/named */
+    FnUtils,
+} from '@adamantiamud/adamantia-core/build/lib';
+
+import serverConfig from './adamantia.json';
 
 /*
  * Set debug variable and encoding.
@@ -15,12 +19,10 @@ import {
 process.env.NODE_DEBUG = 'net';
 process.stdin.setEncoding('utf8');
 
-import serverConfig from './adamantia.json';
-
 /* It's over 9000! */
 const DEFAULT_PORT = 9001;
 
-const init = (): void => {
+const init = async (): Promise<void> => {
     const config = new Config();
 
     config.load(serverConfig);
@@ -30,28 +32,28 @@ const init = (): void => {
         .option(
             '-p, --port [portNumber]',
             `Port to host the server [${DEFAULT_PORT}]`,
-            config.get('port', DEFAULT_PORT)
+            String(config.get<number>('port', DEFAULT_PORT))
         )
         .option('-v, --verbose', 'Verbose console logging.', true)
         .parse(process.argv);
 
-    const logfile = config.get('logfile');
+    const logfile = config.get<string>('logfile');
 
-    if (logfile) {
+    if (FnUtils.hasValue(logfile)) {
         Logger.setFileLogging(`${__dirname}/log/${logfile}`);
     }
 
     // Set logging level based on CLI option or environment variable.
     const logLevel = commander.verbose
         ? 'verbose'
-        : process.env.LOG_LEVEL || config.get('logLevel', 'debug');
+        : process.env.LOG_LEVEL ?? config.get('logLevel', 'debug');
 
     Logger.setLevel(logLevel);
 
     config.set('bundlesPath', `${__dirname}/bundles`);
     config.set('rootPath', __dirname);
 
-    const dataPath = config.get('dataPath');
+    const dataPath = config.get<string>('dataPath');
 
     config.set('dataPath', dataPath.replace('[ROOT]', __dirname));
 
@@ -61,11 +63,12 @@ const init = (): void => {
 
     const manager = new BundleManager(state);
 
-    manager.loadBundles().then(() => {
-        Logger.log('START - Starting server');
+    await manager.loadBundles();
 
-        state.startServer(commander);
-    });
+    Logger.log('START - Starting server');
+
+    state.startServer(commander);
 };
 
-init();
+/* eslint-disable-next-line no-void */
+void init();
