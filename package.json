@@ -6,8 +6,6 @@
     "license": "MIT",
     "repository": "github:adamantiamud/adamantia-demo",
     "bugs": "https://github.com/adamantiamud/adamantia-demo/issues",
-    "type": "module",
-    "types": "index.d.ts",
     "engines": {
         "node": ">=14"
     },
