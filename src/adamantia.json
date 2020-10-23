@@ -51,6 +51,6 @@
     "logfile": "server.log",
     "port.telnet": 4000,
     "port.websocket": 4001,
-    "startingRoom": "limbo:r0001",
+    "startingRoom": "dragonshade:r0001",
     "dataPath": "[ROOT]/../data"
 }
