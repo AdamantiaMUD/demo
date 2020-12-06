@@ -3,7 +3,7 @@ import type {
     GameStateData,
     Player,
     PlayerClass,
-} from '@adamantiamud/adamantia-core/build/lib';
+} from '@adamantiamud/core';
 
 export class Wizard implements PlayerClass {
     /* eslint-disable @typescript-eslint/lines-between-class-members */

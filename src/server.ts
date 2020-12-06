@@ -1,14 +1,14 @@
 /* eslint-disable no-process-env */
 import commander from 'commander';
+import path from 'path';
 
 import {
     BundleManager,
     Config,
     GameState,
     Logger,
-    /* eslint-disable-next-line import/named */
     FnUtils,
-} from '@adamantiamud/adamantia-core/build/lib';
+} from '@adamantiamud/core';
 
 import serverConfig from './adamantia.json';
 
@@ -25,7 +25,14 @@ const DEFAULT_PORT = 9001;
 const init = async (): Promise<void> => {
     const config = new Config();
 
-    config.load(serverConfig);
+    config.load({
+        ...serverConfig,
+        paths: {
+            bundles: path.join(__dirname, 'bundles'),
+            data: path.join(__dirname, '..', 'data'),
+            root: __dirname,
+        },
+    });
 
     // cmdline options
     commander
@@ -37,7 +44,7 @@ const init = async (): Promise<void> => {
         .option('-v, --verbose', 'Verbose console logging.', true)
         .parse(process.argv);
 
-    const logfile = config.get<string>('logfile');
+    const logfile = config.getLogfile();
 
     if (FnUtils.hasValue(logfile)) {
         Logger.setFileLogging(`${__dirname}/log/${logfile}`);
@@ -46,16 +53,9 @@ const init = async (): Promise<void> => {
     // Set logging level based on CLI option or environment variable.
     const logLevel = commander.verbose
         ? 'verbose'
-        : process.env.LOG_LEVEL ?? config.get('logLevel', 'debug');
+        : process.env.LOG_LEVEL ?? config.get('logLevel', 'debug')!;
 
     Logger.setLevel(logLevel);
-
-    config.set('bundlesPath', `${__dirname}/bundles`);
-    config.set('rootPath', __dirname);
-
-    const dataPath = config.get<string>('dataPath');
-
-    config.set('dataPath', dataPath.replace('[ROOT]', __dirname));
 
     const state: GameState = new GameState(config);
 

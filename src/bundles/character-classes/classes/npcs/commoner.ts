@@ -2,7 +2,7 @@ import type {
     CharacterInterface,
     GameStateData,
     NpcClass,
-} from '@adamantiamud/adamantia-core/build/lib';
+} from '@adamantiamud/core';
 
 export class Commoner implements NpcClass {
     /* eslint-disable @typescript-eslint/lines-between-class-members */

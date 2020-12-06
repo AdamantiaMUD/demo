@@ -1,11 +1,11 @@
 {
-    "name": "@adamantiamud/adamantia-demo",
+    "name": "@adamantiamud/demo",
     "version": "0.0.1-alpha.1",
     "description": "Sample MUD to demonstrate the basic concepts of the AdamantiaMUD game engine",
     "author": "Bill Parrott (https://chimericdream.com)",
     "license": "MIT",
-    "repository": "github:adamantiamud/adamantia-demo",
-    "bugs": "https://github.com/adamantiamud/adamantia-demo/issues",
+    "repository": "github:adamantiamud/demo",
+    "bugs": "https://github.com/adamantiamud/demo/issues",
     "engines": {
         "node": ">=14"
     },
@@ -21,7 +21,7 @@
     },
     "main": "build/server.js",
     "dependencies": {
-        "@adamantiamud/adamantia-core": "file:../adamantia-core",
+        "@adamantiamud/core": "file:../core",
         "commander": "6.1.0"
     },
     "devDependencies": {

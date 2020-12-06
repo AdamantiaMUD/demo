@@ -1,56 +1,17 @@
 {
     "bundles": [
         "adamantia.character-attributes",
-        "adamantia.websocket-networking",
         "character-classes"
     ],
-    "entityLoaders": {
-        "accounts": {
-            "source": "JsonDirectory",
-            "config": {
-                "path": "[DATA]/account"
-            }
-        },
-        "areas": {
-            "source": "JsonArea",
-            "config": {
-                "path": "[BUNDLES]/[BUNDLE]/areas"
-            }
-        },
-        "items": {
-            "source": "Json",
-            "config": {
-                "path": "[BUNDLES]/[BUNDLE]/areas/[AREA]/items.json"
-            }
-        },
-        "npcs": {
-            "source": "Json",
-            "config": {
-                "path": "[BUNDLES]/[BUNDLE]/areas/[AREA]/npcs.json"
-            }
-        },
-        "players": {
-            "source": "JsonDirectory",
-            "config": {
-                "path": "[DATA]/player"
-            }
-        },
-        "quests": {
-            "source": "Json",
-            "config": {
-                "path": "[BUNDLES]/[BUNDLE]/areas/[AREA]/quests.json"
-            }
-        },
-        "rooms": {
-            "source": "Json",
-            "config": {
-                "path": "[BUNDLES]/[BUNDLE]/areas/[AREA]/rooms.json"
-            }
-        }
-    },
     "logfile": "server.log",
-    "port.telnet": 4000,
-    "port.websocket": 4001,
-    "startingRoom": "dragonshade:r0001",
-    "dataPath": "[ROOT]/../data"
+    "players": {
+        "startingRoom": "dragonshade:r0001"
+    },
+    "ports": {
+        "telnet": 4000
+    },
+    "paths": {
+        "data": "[ROOT]/../data",
+        "bundles": "[ROOT]/bundles"
+    }
 }
