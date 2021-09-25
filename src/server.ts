@@ -1,6 +1,8 @@
 /* eslint-disable no-process-env */
 import commander from 'commander';
 import path from 'path';
+import {createRequire} from 'module';
+import {fileURLToPath} from 'url';
 
 import {
     BundleManager,
@@ -10,7 +12,14 @@ import {
     FnUtils,
 } from '@adamantiamud/core';
 
-import serverConfig from './adamantia.json';
+import type {MudConfig} from '../../core/build/lib/util/config';
+
+/* eslint-disable-next-line @typescript-eslint/naming-convention, id-match */
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const require = createRequire(import.meta.url);
+
+/* eslint-disable-next-line @typescript-eslint/no-require-imports, import/no-commonjs */
+const serverConfig = require('./adamantia.json') as MudConfig;
 
 /*
  * Set debug variable and encoding.

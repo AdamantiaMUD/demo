@@ -6,16 +6,17 @@
     "license": "MIT",
     "repository": "github:adamantiamud/demo",
     "bugs": "https://github.com/adamantiamud/demo/issues",
+    "type": "module",
     "engines": {
-        "node": ">=14"
+        "node": ">=16"
     },
     "scripts": {
         "build": "tsc",
         "clean": "rimraf build/*",
-        "postbuild": "node scripts/copy-assets.cjs && npx copyfiles data/**/*.json build",
+        "postbuild": "node scripts/copy-assets.cjs && copyfiles data/**/*.json build",
         "prebuild": "npm run clean",
         "prestart": "npm run build",
-        "start": "node ./build/server.js",
+        "start": "node --experimental-specifier-resolution=node ./build/server.js",
         "type-check": "tsc --noEmit",
         "type-check:watch": "npm run type-check -- --watch"
     },
@@ -25,16 +26,17 @@
         "commander": "6.1.0"
     },
     "devDependencies": {
-        "@chimericdream/eslint-config": "6.0.1",
-        "@chimericdream/eslint-config-import": "1.0.1",
-        "@chimericdream/eslint-config-typescript": "5.0.1",
-        "@types/fs-extra": "9.0.2",
-        "@types/node": "14.11.8",
-        "@typescript-eslint/eslint-plugin": "4.4.1",
-        "@typescript-eslint/parser": "4.4.1",
-        "eslint": "7.11.0",
-        "fs-extra": "9.0.1",
+        "@chimericdream/eslint-config": "6.1.0",
+        "@chimericdream/eslint-config-import": "1.0.2",
+        "@chimericdream/eslint-config-typescript": "5.1.0",
+        "@types/fs-extra": "9.0.13",
+        "@types/node": "16.9.6",
+        "@typescript-eslint/eslint-plugin": "4.31.2",
+        "@typescript-eslint/parser": "4.31.2",
+        "copyfiles": "2.4.1",
+        "eslint": "7.32.0",
+        "fs-extra": "10.0.0",
         "rimraf": "3.0.2",
-        "typescript": "4.0.3"
+        "typescript": "4.4.3"
     }
 }

@@ -1,5 +1,5 @@
 import type {
-    CharacterInterface,
+    Character,
     GameStateData,
     Player,
     PlayerClass,
@@ -12,7 +12,7 @@ export class Barbarian implements PlayerClass {
     public readonly abilityTable: PlayerClass['abilityTable'] = {};
     /* eslint-enable @typescript-eslint/lines-between-class-members */
 
-    public setup(state: GameStateData, character: CharacterInterface): void {}
+    public setup(state: GameStateData, character: Character): void {}
 
     public levelUp(player: Player, newLevel: number): void {}
 }

@@ -1,5 +1,5 @@
 import type {
-    CharacterInterface,
+    Character,
     GameStateData,
     NpcClass,
 } from '@adamantiamud/core';
@@ -11,7 +11,7 @@ export class Adept implements NpcClass {
     public readonly abilityTable: NpcClass['abilityTable'] = {};
     /* eslint-enable @typescript-eslint/lines-between-class-members */
 
-    public setup(state: GameStateData, character: CharacterInterface): void {}
+    public setup(state: GameStateData, character: Character): void {}
 }
 
 export default Adept;
