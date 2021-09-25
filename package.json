@@ -1,32 +1,42 @@
 {
-    "name": "@adamantiamud/adamantia-demo",
+    "name": "@adamantiamud/demo",
     "version": "0.0.1-alpha.1",
     "description": "Sample MUD to demonstrate the basic concepts of the AdamantiaMUD game engine",
     "author": "Bill Parrott (https://chimericdream.com)",
     "license": "MIT",
-    "repository": "github:adamantiamud/adamantia-demo",
-    "bugs": "https://github.com/adamantiamud/adamantia-demo/issues",
+    "repository": "github:adamantiamud/demo",
+    "bugs": "https://github.com/adamantiamud/demo/issues",
     "type": "module",
-    "types": "index.d.ts",
     "engines": {
-        "node": ">=12"
+        "node": ">=16"
     },
     "scripts": {
-        "build": "npm run build:types && npm run build:ts",
-        "build:ts": "tsc",
-        "build:types": "tsc --emitDeclarationOnly",
+        "build": "tsc",
+        "clean": "rimraf build/*",
+        "postbuild": "node scripts/copy-assets.cjs && copyfiles data/**/*.json build",
+        "prebuild": "npm run clean",
+        "prestart": "npm run build",
+        "start": "node --experimental-specifier-resolution=node ./build/server.js",
         "type-check": "tsc --noEmit",
         "type-check:watch": "npm run type-check -- --watch"
     },
-    "main": "build/index.js",
-    "dependencies": {},
+    "main": "build/server.js",
+    "dependencies": {
+        "@adamantiamud/core": "file:../core",
+        "commander": "6.1.0"
+    },
     "devDependencies": {
-        "@chimericdream/eslint-config": "4.1.0",
-        "@chimericdream/eslint-config-typescript": "3.0.0",
-        "@types/node": "12.6.8",
-        "@typescript-eslint/eslint-plugin": "1.13.0",
-        "@typescript-eslint/parser": "1.13.0",
-        "eslint": "6.1.0",
-        "typescript": "3.6.3"
+        "@chimericdream/eslint-config": "6.1.0",
+        "@chimericdream/eslint-config-import": "1.0.2",
+        "@chimericdream/eslint-config-typescript": "5.1.0",
+        "@types/fs-extra": "9.0.13",
+        "@types/node": "16.9.6",
+        "@typescript-eslint/eslint-plugin": "4.31.2",
+        "@typescript-eslint/parser": "4.31.2",
+        "copyfiles": "2.4.1",
+        "eslint": "7.32.0",
+        "fs-extra": "10.0.0",
+        "rimraf": "3.0.2",
+        "typescript": "4.4.3"
     }
 }
