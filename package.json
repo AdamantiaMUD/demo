@@ -12,7 +12,7 @@
     },
     "scripts": {
         "build": "tsc",
-        "clean": "rimraf build/*",
+        "clean": "rimraf build",
         "postbuild": "node scripts/copy-assets.cjs && copyfiles data/**/*.json build",
         "prebuild": "npm run clean",
         "prestart": "npm run build",
@@ -29,14 +29,14 @@
         "@chimericdream/eslint-config": "7.0.2",
         "@chimericdream/eslint-config-import": "1.1.1",
         "@chimericdream/eslint-config-typescript": "6.0.0",
-        "@types/fs-extra": "9.0.13",
+        "@types/fs-extra": "11.0.4",
         "@types/node": "20.12.7",
         "@typescript-eslint/eslint-plugin": "7.6.0",
         "@typescript-eslint/parser": "7.6.0",
         "copyfiles": "2.4.1",
         "eslint": "8.57.0",
-        "fs-extra": "10.0.0",
-        "rimraf": "3.0.2",
+        "fs-extra": "11.2.0",
+        "rimraf": "5.0.5",
         "typescript": "5.4.5"
     }
 }
