@@ -26,6 +26,12 @@ module.exports = {
                 '.d.ts',
             ],
         },
+        'import/resolver': {
+            typescript: {
+                alwaysTryTypes: true,
+                project: './tsconfig.eslint.json',
+            },
+        },
     },
     'rules': {
         '@typescript-eslint/no-magic-numbers': 'off',

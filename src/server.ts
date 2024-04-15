@@ -12,7 +12,7 @@ import {
     FnUtils,
 } from '@adamantiamud/core';
 
-import type {MudConfig} from '../../core/build/lib/util/config';
+import type {MudConfig} from '../../core/build/lib/util/config.js';
 
 /* eslint-disable-next-line @typescript-eslint/naming-convention, id-match */
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
