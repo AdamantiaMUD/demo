@@ -1,8 +1,4 @@
-import type {
-    Character,
-    GameStateData,
-    NpcClass,
-} from '@adamantiamud/core';
+import type { Character, GameStateData, NpcClass } from '@adamantiamud/core';
 
 export class Adept implements NpcClass {
     /* eslint-disable @typescript-eslint/lines-between-class-members */

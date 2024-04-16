@@ -5,6 +5,7 @@
         "baseUrl": ".",
         "declaration": false,
         "esModuleInterop": true,
+        "isolatedModules": true,
         "module": "ESNext",
         "moduleResolution": "node",
         "outDir": "build",

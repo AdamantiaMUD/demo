@@ -9,7 +9,7 @@ module.exports = {
     'parser': '@typescript-eslint/parser',
     'parserOptions': {
         ecmaVersion: 2020,
-        extraFileExtensions: ['.cjs'],
+        extraFileExtensions: ['.cjs', '.ts'],
         project: './tsconfig.eslint.json',
         sourceType: 'module',
     },
@@ -18,6 +18,7 @@ module.exports = {
         es6: true,
         node: true,
     },
+    'plugins': ['prettier'],
     'settings': {
         'import/parsers': {
             '@typescript-eslint/parser': [
@@ -36,6 +37,7 @@ module.exports = {
     'rules': {
         '@typescript-eslint/no-magic-numbers': 'off',
 
+        'import/consistent-type-specifier-style': 'off',
         'import/dynamic-import-chunkname': 'off',
         'import/no-nodejs-modules': 'off',
 

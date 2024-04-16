@@ -8,22 +8,26 @@
     "bugs": "https://github.com/adamantiamud/demo/issues",
     "type": "module",
     "engines": {
-        "node": ">=16"
+        "node": ">=20"
     },
     "scripts": {
         "build": "tsc",
         "clean": "rimraf build",
+        "lint": "eslint",
+        "lint:fix": "eslint --fix",
+        "lint:quiet": "eslint --quiet",
         "postbuild": "node scripts/copy-assets.cjs && copyfiles data/**/*.json build",
+        "postlint:fix": "prettier --write src",
         "prebuild": "npm run clean",
         "prestart": "npm run build",
-        "start": "node --experimental-specifier-resolution=node ./build/server.js",
+        "start": "node ./build/server.js",
         "type-check": "tsc --noEmit",
         "type-check:watch": "npm run type-check -- --watch"
     },
     "main": "build/server.js",
     "dependencies": {
         "@adamantiamud/core": "file:../core",
-        "commander": "6.1.0"
+        "commander": "12.0.0"
     },
     "devDependencies": {
         "@chimericdream/eslint-config": "7.0.2",
@@ -35,7 +39,9 @@
         "@typescript-eslint/parser": "7.6.0",
         "copyfiles": "2.4.1",
         "eslint": "8.57.0",
+        "eslint-plugin-prettier": "5.1.3",
         "fs-extra": "11.2.0",
+        "prettier": "3.2.5",
         "rimraf": "5.0.5",
         "typescript": "5.4.5"
     }

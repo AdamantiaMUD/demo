@@ -1,8 +1,5 @@
 {
-    "bundles": [
-        "adamantia.character-attributes",
-        "character-classes"
-    ],
+    "bundles": ["adamantia.character-attributes", "character-classes"],
     "logfile": "server.log",
     "players": {
         "startingRoom": "dragonshade:r0001"

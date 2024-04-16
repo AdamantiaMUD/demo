@@ -1,8 +1,6 @@
-/* eslint-disable no-process-env */
-import commander from 'commander';
-import path from 'path';
-import {createRequire} from 'module';
-import {fileURLToPath} from 'url';
+import { createRequire } from 'node:module';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 import {
     BundleManager,
@@ -11,8 +9,9 @@ import {
     Logger,
     FnUtils,
 } from '@adamantiamud/core';
+import { program } from 'commander';
 
-import type {MudConfig} from '../../core/build/lib/util/config.js';
+import type { MudConfig } from '../../core/build/lib/util/config.js';
 
 /* eslint-disable-next-line @typescript-eslint/naming-convention, id-match */
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -44,7 +43,7 @@ const init = async (): Promise<void> => {
     });
 
     // cmdline options
-    commander
+    program
         .option(
             '-p, --port [portNumber]',
             `Port to host the server [${DEFAULT_PORT}]`,
@@ -60,7 +59,8 @@ const init = async (): Promise<void> => {
     }
 
     // Set logging level based on CLI option or environment variable.
-    const logLevel = commander.verbose
+    /* eslint-disable-next-line @typescript-eslint/strict-boolean-expressions */
+    const logLevel = program.getOptionValue('verbose')
         ? 'verbose'
         : process.env.LOG_LEVEL ?? config.get('logLevel', 'debug')!;
 
@@ -76,7 +76,7 @@ const init = async (): Promise<void> => {
 
     Logger.log('START - Starting server');
 
-    state.startServer(commander);
+    state.startServer(program);
 };
 
 /* eslint-disable-next-line no-void */
