@@ -31,7 +31,7 @@
     },
     "devDependencies": {
         "@chimericdream/eslint-config": "7.0.2",
-        "@chimericdream/eslint-config-import": "1.1.1",
+        "@chimericdream/eslint-config-import": "1.1.2",
         "@chimericdream/eslint-config-typescript": "6.0.0",
         "@types/fs-extra": "11.0.4",
         "@types/node": "20.12.7",
