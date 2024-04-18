@@ -8,10 +8,9 @@ import {
     GameState,
     Logger,
     FnUtils,
+    type MudConfig,
 } from '@adamantiamud/core';
 import { program } from 'commander';
-
-import type { MudConfig } from '../../core/build/lib/util/config.js';
 
 /* eslint-disable-next-line @typescript-eslint/naming-convention, id-match */
 const __dirname = path.dirname(fileURLToPath(import.meta.url));

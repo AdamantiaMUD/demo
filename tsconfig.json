@@ -1,21 +1,12 @@
 {
+    "extends": "../tsconfig.json",
     "compilerOptions": {
-        "allowJs": false,
-        "allowSyntheticDefaultImports": true,
         "baseUrl": ".",
-        "declaration": false,
-        "esModuleInterop": true,
-        "isolatedModules": true,
-        "module": "ESNext",
-        "moduleResolution": "node",
         "outDir": "build",
-        "resolveJsonModule": true,
-        "sourceMap": true,
-        "target": "ESNext",
         "typeRoots": [
+            "../node_modules/@types",
             "./node_modules/@types"
-        ],
-        "strict": true
+        ]
     },
     "exclude": ["node_modules"],
     "include": [
